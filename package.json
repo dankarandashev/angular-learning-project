@@ -10,7 +10,7 @@
 		"prettier:fix": "prettier --write .",
 		"lint": "ng lint",
 		"prepare": "husky install",
-    "lint-staged": "lint-staged"
+		"lint-staged": "lint-staged"
 	},
 	"private": true,
 	"dependencies": {
