@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
 
 @Component({
 	selector: 'app-header',
@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
 	styleUrls: ['./header.component.less'],
 })
 export class HeaderComponent {
-	constructor() {}
+	@Input() title!: string;
+	@Output() menuClick = new EventEmitter<void>();
+
+	// as an example
+	// @HostListener('click', ['$event.target', '$event'])
+	// hostLog(target: HTMLElement, event: Event): void {
+	//   console.log('host click', target, event);
+	// }
 }
