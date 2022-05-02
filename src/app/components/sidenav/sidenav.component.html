@@ -1,9 +1,13 @@
 <mat-drawer-container class="example-container" autosize>
-	<mat-drawer [opened]="isOpened" #drawer class="example-sidenav" mode="side">
-		<ng-content select="[matlist1]"></ng-content>
+	<mat-drawer
+    [opened]="isOpened"
+    #drawer
+    class="example-sidenav"
+    mode="side">
+    <ng-content select="[matListSidebar]"></ng-content>
 	</mat-drawer>
 
 	<div class="example-sidenav-content">
-		<ng-content select="mat-form-field"></ng-content>
+    <ng-content select="mat-form-field"></ng-content>
 	</div>
 </mat-drawer-container>

@@ -1,12 +1,15 @@
-<app-header [title]="title" (menuClick)="onMenuClick()"></app-header>
+<app-header
+  [title]="title"
+  (menuClick)="onMenuClick()"
+></app-header>
 <app-sidenav [(isOpened)]="isSideMenuOpened">
-	<mat-list matlist1 role="list">
-		<mat-list-item role="listitem">Item 1</mat-list-item>
-		<mat-list-item role="listitem">Item 2</mat-list-item>
-		<mat-list-item role="listitem">Item 3</mat-list-item>
-	</mat-list>
-	<mat-form-field class="example-full-width">
-		<mat-label>Search</mat-label>
-		<input matInput />
-	</mat-form-field>
+  <mat-list matListSidebar role="list">
+    <mat-list-item role="listitem">Item 1</mat-list-item>
+    <mat-list-item role="listitem">Item 2</mat-list-item>
+    <mat-list-item role="listitem">Item 3</mat-list-item>
+  </mat-list>
+  <mat-form-field class="example-full-width">
+    <mat-label>Search</mat-label>
+    <input matInput>
+  </mat-form-field>
 </app-sidenav>
