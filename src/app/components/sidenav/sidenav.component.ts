@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, TemplateRef } from '@angular/core';
 
 @Component({
 	selector: 'app-sidenav',
@@ -7,6 +7,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class SidenavComponent {
 	@Input() isOpened = true;
+	@Input() navListTemplate!: TemplateRef<unknown>;
 	@Output() isOpenedChange = new EventEmitter<boolean>();
 
 	onToggleSidenav() {
