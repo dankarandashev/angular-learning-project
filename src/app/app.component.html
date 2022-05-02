@@ -1,6 +1,12 @@
 <app-header [title]="title" (menuClick)="onMenuClick()"></app-header>
-<!-- <app-sidenav
-  [isOpened]="isSideMenuOpened"
-  (openedChange)="isSideMenuOpened = $event"
-></app-sidenav> -->
-<app-sidenav [(isOpened)]="isSideMenuOpened"></app-sidenav>
+<app-sidenav [(isOpened)]="isSideMenuOpened">
+	<mat-list matlist1 role="list">
+		<mat-list-item role="listitem">Item 1</mat-list-item>
+		<mat-list-item role="listitem">Item 2</mat-list-item>
+		<mat-list-item role="listitem">Item 3</mat-list-item>
+	</mat-list>
+	<mat-form-field class="example-full-width">
+		<mat-label>Search</mat-label>
+		<input matInput />
+	</mat-form-field>
+</app-sidenav>
