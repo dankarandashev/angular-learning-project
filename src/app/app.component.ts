@@ -7,6 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 	title = 'Angular learninig project';
+	isSideMenuOpened = true;
 
-	onMenuClick() {}
+	onMenuClick() {
+		this.isSideMenuOpened = !this.isSideMenuOpened;
+	}
+
+	isOpenedChange() {}
 }

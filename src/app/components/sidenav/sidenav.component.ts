@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
 	selector: 'app-sidenav',
@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
 	styleUrls: ['./sidenav.component.less'],
 })
 export class SidenavComponent {
-	constructor() {}
+	@Input() isOpened = true;
+	@Output() isOpenedChange = new EventEmitter<boolean>();
+
+	onToggleSidenav() {
+		this.isOpenedChange.emit(!this.isOpened);
+	}
 }

@@ -1,2 +1,8 @@
 <app-header [title]="title" (menuClick)="onMenuClick()"></app-header>
-<app-sidenav></app-sidenav>
+<!-- <app-sidenav
+  [isOpened]="isSideMenuOpened"
+  (openedChange)="isSideMenuOpened = $event"
+></app-sidenav> -->
+<app-sidenav
+  [(isOpened)]="isSideMenuOpened"
+></app-sidenav>

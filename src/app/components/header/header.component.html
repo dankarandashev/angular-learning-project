@@ -3,7 +3,7 @@
 		mat-icon-button
 		class="example-icon"
 		aria-label="Example icon-button with menu icon"
-		(click)="menuClick.emit($event); $event.stopPropagation()"
+		(click)="menuClick.emit(); $event.stopPropagation()"
 	>
 		<mat-icon>menu</mat-icon>
 	</button>
