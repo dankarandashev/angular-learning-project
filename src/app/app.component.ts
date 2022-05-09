@@ -6,10 +6,12 @@ import { Component } from '@angular/core';
 	styleUrls: ['./app.component.less'],
 })
 export class AppComponent {
-	title = 'Angular-learning-project';
-	iconLink = 'https://ankaraozgursurucukursu.com/wp-content/uploads/2020/10/icon.png';
+	title = 'Angular learninig project';
+	isSideMenuOpened = true;
 
-	log(event: Event): void {
-		console.log('Click!', event);
+	onMenuClick() {
+		this.isSideMenuOpened = !this.isSideMenuOpened;
 	}
+
+	isOpenedChange() {}
 }
