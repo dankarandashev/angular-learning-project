@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, TemplateRef, ViewChild, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, TemplateRef, ViewChild, ElementRef, OnChanges, SimpleChanges, AfterViewInit, ViewContainerRef, ChangeDetectorRef } from '@angular/core';
 
 @Component({
 	selector: 'app-sidenav',
@@ -11,14 +11,31 @@ export class SidenavComponent implements OnChanges {
 	@Input() navListTemplate!: TemplateRef<unknown>;
 	@Output() isOpenedChange = new EventEmitter<boolean>();
 
-  @ViewChild('navListContainer')
-  private navListContainer!: ElementRef;
+  @ViewChild('navListContainer', {
+    read: ViewContainerRef,
+    static: true
+  })
+  private navListContainer!: ViewContainerRef;
 
-  ngOnChanges({navListTpl}: SimpleChanges): void {
-    throw new Error('Method not implemented.');
+  /**********************
+  * NG HOOKS
+  **********************/
+
+  ngOnChanges({navListTemplate}: SimpleChanges): void {
+    if (navListTemplate) {
+      this.viewNavListTemplate();
+    }
   }
 
-	onToggleSidenav() {
+  /**********************
+  * HELPERS
+  **********************/
+
+	onToggleSidenav(): void {
 		this.isOpenedChange.emit(!this.isOpened);
 	}
+
+  viewNavListTemplate(): void {
+    this.navListContainer.createEmbeddedView(this.navListTemplate);
+  }
 }
