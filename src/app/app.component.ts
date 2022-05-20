@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
 
 @Component({
 	selector: 'app-root',
@@ -7,10 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 	title = 'Angular learninig project';
-	isSideMenuOpened = true;
+
+  @ViewChild(SidenavComponent, {static: true})
+  private sidenavComponent!: SidenavComponent;
 
 	onMenuClick() {
-		this.isSideMenuOpened = !this.isSideMenuOpened;
+		this.sidenavComponent.onToggleSidenav();
 	}
 
 	isOpenedChange() {}

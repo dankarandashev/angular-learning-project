@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter, TemplateRef, ViewChild, ContentChild, OnInit, SimpleChanges, AfterViewInit, ViewContainerRef, ChangeDetectorRef } from '@angular/core';
+import { MatDrawer } from '@angular/material/sidenav';
 
 @Component({
 	selector: 'app-sidenav',
@@ -7,14 +8,15 @@ import { Component, Input, Output, EventEmitter, TemplateRef, ViewChild, Content
 })
 export class SidenavComponent implements OnInit {
 
-	@Input() isOpened = true;
-	@Output() isOpenedChange = new EventEmitter<boolean>();
-
   @ViewChild('navListContainer', {
     read: ViewContainerRef,
     static: true
   })
   private navListContainer!: ViewContainerRef;
+
+
+  @ViewChild(MatDrawer, {static: true})
+  private matDrawer!: MatDrawer;
 
   @ContentChild('navListTpl', {static: true})
   private navListTemplate!: TemplateRef<unknown>;
@@ -32,7 +34,7 @@ export class SidenavComponent implements OnInit {
   **********************/
 
 	onToggleSidenav(): void {
-		this.isOpenedChange.emit(!this.isOpened);
+    this.matDrawer.toggle();
 	}
 
   viewNavListTemplate(): void {
