@@ -1,14 +1,13 @@
-import { Component, Input, Output, EventEmitter, TemplateRef, ViewChild, ElementRef, OnChanges, SimpleChanges, AfterViewInit, ViewContainerRef, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter, TemplateRef, ViewChild, ContentChild, OnInit, SimpleChanges, AfterViewInit, ViewContainerRef, ChangeDetectorRef } from '@angular/core';
 
 @Component({
 	selector: 'app-sidenav',
 	templateUrl: './sidenav.component.html',
 	styleUrls: ['./sidenav.component.less'],
 })
-export class SidenavComponent implements OnChanges {
+export class SidenavComponent implements OnInit {
 
 	@Input() isOpened = true;
-	@Input() navListTemplate!: TemplateRef<unknown>;
 	@Output() isOpenedChange = new EventEmitter<boolean>();
 
   @ViewChild('navListContainer', {
@@ -17,14 +16,15 @@ export class SidenavComponent implements OnChanges {
   })
   private navListContainer!: ViewContainerRef;
 
+  @ContentChild('navListTpl', {static: true})
+  private navListTemplate!: TemplateRef<unknown>;
+
   /**********************
   * NG HOOKS
   **********************/
 
-  ngOnChanges({navListTemplate}: SimpleChanges): void {
-    if (navListTemplate) {
-      this.viewNavListTemplate();
-    }
+  ngOnInit(): void {
+    this.viewNavListTemplate();
   }
 
   /**********************
