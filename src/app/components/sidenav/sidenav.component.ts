@@ -38,7 +38,8 @@ export class SidenavComponent implements OnInit {
 
 	onToggleSidenav(): void {
     this.matDrawer.toggle();
-    this.changeDetectorRef.markForCheck();
+    // this.changeDetectorRef.markForCheck();
+    this.changeDetectorRef.detectChanges();
 	}
 
   viewNavListTemplate(): void {
