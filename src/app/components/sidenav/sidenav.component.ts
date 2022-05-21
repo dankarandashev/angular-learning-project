@@ -1,10 +1,11 @@
-import { Component, Input, Output, EventEmitter, TemplateRef, ViewChild, ContentChild, OnInit, SimpleChanges, AfterViewInit, ViewContainerRef, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter, TemplateRef, ViewChild, ContentChild, OnInit, SimpleChanges, AfterViewInit, ViewContainerRef, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
 
 @Component({
 	selector: 'app-sidenav',
 	templateUrl: './sidenav.component.html',
 	styleUrls: ['./sidenav.component.less'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SidenavComponent implements OnInit {
 
@@ -21,6 +22,8 @@ export class SidenavComponent implements OnInit {
   @ContentChild('navListTpl', {static: true})
   private navListTemplate!: TemplateRef<unknown>;
 
+  constructor(private changeDetectorRef: ChangeDetectorRef) {}
+
   /**********************
   * NG HOOKS
   **********************/
@@ -35,6 +38,7 @@ export class SidenavComponent implements OnInit {
 
 	onToggleSidenav(): void {
     this.matDrawer.toggle();
+    this.changeDetectorRef.markForCheck();
 	}
 
   viewNavListTemplate(): void {
