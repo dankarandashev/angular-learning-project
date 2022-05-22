@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostListener } from '@angular/core';
+import { Directive, ElementRef, HostBinding, HostListener } from '@angular/core';
 
 @Directive({
   selector: '[appClickShadow]'
@@ -6,19 +6,11 @@ import { Directive, ElementRef, HostListener } from '@angular/core';
 export class ClickShadowDirective {
   @HostListener('click')
   onClick() {
-    // alert('click')
-    this.isBoxShadowActive = !this.isBoxShadowActive;
-    if (this.isBoxShadowActive) {
-      this.element.style.boxShadow = 'inset 0 0 10px #000';
-      return;
-    }
-    this.element.style.boxShadow = '';
+    this.boxBorder = this.boxBorder
+      ? ''
+      : '#000 3px solid'
   }
 
-  private element!: HTMLElement;
-  private isBoxShadowActive: boolean = false;
-
-  constructor(private elementRef: ElementRef) {
-    this.element = elementRef.nativeElement;
-  }
+  @HostBinding('style.border')   // bind to value of DOM element, ex. style="border: `sth`"
+  private boxBorder = '';
 }
