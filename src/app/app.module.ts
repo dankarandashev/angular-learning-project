@@ -11,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { SidenavModule } from './components/sidenav/sidenav.module';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
+import { NgClassModule } from './shared/directives/ng-class/ng-class.module';
 
 @NgModule({
 	declarations: [AppComponent, HeaderComponent],
@@ -24,6 +25,7 @@ import { MatListModule } from '@angular/material/list';
 		SidenavModule,
 		MatInputModule,
 		MatListModule,
+    NgClassModule,
 	],
 	providers: [],
 	bootstrap: [AppComponent],

@@ -6,7 +6,14 @@
 	</mat-form-field>
 	<p>{{ searchInput.value }}</p>
 	<ng-template #navListTpl>
-		<mat-list #list role="list">
+		<mat-list
+      #list
+      role="list"
+      [appNgClass]="{
+        'search-not-empty': searchInput.value,
+        'has-secret-value': searchInput.value === '123'
+      }"
+    >
 			<mat-list-item role="listitem">Item 1</mat-list-item>
 			<mat-list-item role="listitem">Item 2</mat-list-item>
 			<mat-list-item role="listitem">Item 3</mat-list-item>
