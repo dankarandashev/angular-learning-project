@@ -12,6 +12,7 @@ import { SidenavModule } from './components/sidenav/sidenav.module';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { NgClassModule } from './shared/directives/ng-class/ng-class.module';
+import { ClickShadowModule } from './shared/directives/click-shadow/click-shadow.module';
 
 @NgModule({
 	declarations: [AppComponent, HeaderComponent],
@@ -26,6 +27,7 @@ import { NgClassModule } from './shared/directives/ng-class/ng-class.module';
 		MatInputModule,
 		MatListModule,
     NgClassModule,
+    ClickShadowModule,
 	],
 	providers: [],
 	bootstrap: [AppComponent],
