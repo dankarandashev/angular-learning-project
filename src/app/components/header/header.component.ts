@@ -4,7 +4,7 @@ import { Component, EventEmitter, HostListener, Input, Output, ChangeDetectionSt
 	selector: 'app-header',
 	templateUrl: './header.component.html',
 	styleUrls: ['./header.component.less'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
 	@Input() title!: string;

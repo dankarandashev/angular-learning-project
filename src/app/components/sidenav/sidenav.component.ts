@@ -1,48 +1,60 @@
-import { Component, Input, Output, EventEmitter, TemplateRef, ViewChild, ContentChild, OnInit, SimpleChanges, AfterViewInit, ViewContainerRef, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
+import {
+	Component,
+	Input,
+	Output,
+	EventEmitter,
+	TemplateRef,
+	ViewChild,
+	ContentChild,
+	OnInit,
+	SimpleChanges,
+	AfterViewInit,
+	ViewContainerRef,
+	ChangeDetectorRef,
+	ChangeDetectionStrategy,
+} from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
 
 @Component({
 	selector: 'app-sidenav',
 	templateUrl: './sidenav.component.html',
 	styleUrls: ['./sidenav.component.less'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SidenavComponent implements OnInit {
+	@ViewChild('navListContainer', {
+		read: ViewContainerRef,
+		static: true,
+	})
+	private navListContainer!: ViewContainerRef;
 
-  @ViewChild('navListContainer', {
-    read: ViewContainerRef,
-    static: true
-  })
-  private navListContainer!: ViewContainerRef;
+	@ViewChild(MatDrawer, { static: true })
+	private matDrawer!: MatDrawer;
 
+	@ContentChild('navListTpl', { static: true })
+	private navListTemplate!: TemplateRef<unknown>;
 
-  @ViewChild(MatDrawer, {static: true})
-  private matDrawer!: MatDrawer;
+	constructor(private changeDetectorRef: ChangeDetectorRef) {}
 
-  @ContentChild('navListTpl', {static: true})
-  private navListTemplate!: TemplateRef<unknown>;
+	/**********************
+	 * NG HOOKS
+	 **********************/
 
-  constructor(private changeDetectorRef: ChangeDetectorRef) {}
-
-  /**********************
-  * NG HOOKS
-  **********************/
-
-  ngOnInit(): void {
-    this.viewNavListTemplate();
-  }
-
-  /**********************
-  * HELPERS
-  **********************/
-
-	onToggleSidenav(): void {
-    this.matDrawer.toggle();
-    // this.changeDetectorRef.markForCheck();
-    this.changeDetectorRef.detectChanges();
+	ngOnInit(): void {
+		this.viewNavListTemplate();
 	}
 
-  viewNavListTemplate(): void {
-    this.navListContainer.createEmbeddedView(this.navListTemplate);
-  }
+	/**********************
+	 * HELPERS
+	 **********************/
+
+	onToggleSidenav(): void {
+		this.matDrawer.toggle();
+		// this.changeDetectorRef.markForCheck();
+		this.changeDetectorRef.detectChanges();
+	}
+
+	viewNavListTemplate(): void {
+		this.navListContainer.createEmbeddedView(this.navListTemplate);
+	}
 }
