@@ -1,0 +1,21 @@
+<mat-form-field class="search-input">
+	<mat-label>Search</mat-label>
+	<input #searchInput matInput />
+</mat-form-field>
+<!-- <p *ngIf="searchInput.value; else notSearch">
+  Input value: {{ searchInput.value }}
+</p>
+
+<ng-template #notSearch>
+  <p>You are not searching</p>
+</ng-template> -->
+
+<div *ngIf="products; else loadingStub">
+	<div *ngFor="product; of: products">
+		<app-product-card></app-product-card>
+	</div>
+</div>
+
+<ng-template #loadingStub>
+	<p>Loading...</p>
+</ng-template>
